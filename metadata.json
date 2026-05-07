@@ -1,0 +1,6 @@
+{
+  "name": "ManualAI",
+  "description": "Meeting-to-Manual: Automatically transform your Fathom recordings into polished step-by-step training guides using AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
