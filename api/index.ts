@@ -13,7 +13,7 @@ const mockRecordings = [
     date: 'Oct 12, 2023',
     duration: '42m 15s',
     participants: 3,
-    ownerEmail: 'user@example.com',
+    ownerEmail: 'balaje@zuper.co',
     participantAvatars: [],
     transcript: "Mock transcript for Lead Qualification..."
   }
@@ -140,4 +140,9 @@ async function startServer() {
   });
 }
 
-startServer();
+// Only start the server if we are running this file directly
+if (process.env.NODE_ENV !== 'test') {
+  startServer();
+}
+
+export default app;
