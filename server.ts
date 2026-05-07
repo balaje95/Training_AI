@@ -27,10 +27,11 @@ app.use(express.json());
   // API Routes
 app.get("/api/fathom/meetings", async (req, res) => {
   const email = req.query.email as string;
-  const apiKey = process.env.FATHOM_API_KEY;
+  // Prioritize header key if provided by user in Settings, fallback to server env
+  const apiKey = req.headers['x-fathom-key'] as string || process.env.FATHOM_API_KEY;
 
   if (!apiKey) {
-    return res.status(400).json({ error: "FATHOM_API_KEY is missing in backend environment." });
+    return res.status(400).json({ error: "Fathom API Key is missing. Please configure it in Settings or environment variables." });
   }
 
   try {

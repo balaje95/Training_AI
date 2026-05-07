@@ -38,7 +38,10 @@ import {
   Link as LinkIcon,
   RefreshCw,
   Sparkles,
-  Maximize2
+  Maximize2,
+  Key,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ViewState, Guide, Recording, Step, PipelineType } from './types';
@@ -226,7 +229,7 @@ const DashboardView = ({ onNewGuide, guides }: { onNewGuide: () => void, guides:
 
 // --- View: Recording Selection ---
 const RecordingSelectionView = ({ onSelect }: { onSelect: (rec: Recording, pipeline: PipelineType, customer: string) => void }) => {
-  const [searchTerm, setSearchTerm] = useState('bnprasanna95@gmail.com');
+  const [searchTerm, setSearchTerm] = useState('balaje@zuper.co');
   const [selectedRec, setSelectedRec] = useState<Recording | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [recordings, setRecordings] = useState<Recording[]>([]);
@@ -683,57 +686,160 @@ const LibraryView = ({ guides }: { guides: Guide[] }) => {
 
 // --- View: Settings ---
 const SettingsView = () => {
+  const [fathomKey, setFathomKey] = useState(localStorage.getItem('FATHOM_API_KEY') || '');
+  const [geminiKey, setGeminiKey] = useState(localStorage.getItem('GEMINI_API_KEY') || '');
+  const [showFathom, setShowFathom] = useState(false);
+  const [showGemini, setShowGemini] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
+
+  const handleSave = () => {
+    localStorage.setItem('FATHOM_API_KEY', fathomKey);
+    localStorage.setItem('GEMINI_API_KEY', geminiKey);
+    setSaveStatus('Settings saved successfully!');
+    setTimeout(() => setSaveStatus(null), 3000);
+  };
+
   const sections = [
-    { title: 'Connections', icon: LinkIcon, items: [
-      { name: 'Fathom Video', status: 'Connected', desc: 'Syncs latest 10 recordings automatically.' },
+    { 
+      title: 'API Configuration', 
+      icon: Key, 
+      isCustom: true,
+      content: (
+        <div className="p-8 space-y-8">
+          {/* Fathom Key */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-bold text-[#111c2d] uppercase tracking-wider">Fathom API Key</label>
+              <a 
+                href="https://fathom.video/fathom-for-teams-api" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-xs text-[#0050cb] hover:underline flex items-center gap-1"
+              >
+                Where do I find this? <ExternalLink size={12} />
+              </a>
+            </div>
+            <div className="relative group">
+              <input 
+                type={showFathom ? "text" : "password"}
+                value={fathomKey}
+                onChange={(e) => setFathomKey(e.target.value)}
+                placeholder="Enter your Fathom Bearer Token..."
+                className="w-full bg-[#f9f9ff] border border-[#c2c6d8] rounded-xl py-3 pl-4 pr-12 text-sm focus:ring-2 focus:ring-[#0050cb]/20 focus:border-[#0050cb] outline-none transition-all"
+              />
+              <button 
+                onClick={() => setShowFathom(!showFathom)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#727687] hover:text-[#111c2d]"
+              >
+                {showFathom ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+            <p className="text-xs text-[#727687] leading-relaxed">
+              Required to fetch real-time transcripts from your Fathom recordings. 
+              Find this in your <strong>Fathom for Teams</strong> settings under "API Tokens".
+            </p>
+          </div>
+
+          <div className="h-px bg-[#f0f3ff]"></div>
+
+          {/* Gemini Key */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-bold text-[#111c2d] uppercase tracking-wider">Google Gemini API Key</label>
+              <a 
+                href="https://aistudio.google.com/app/apikey" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-xs text-[#0050cb] hover:underline flex items-center gap-1"
+              >
+                Get a free key <ExternalLink size={12} />
+              </a>
+            </div>
+            <div className="relative group">
+              <input 
+                type={showGemini ? "text" : "password"}
+                value={geminiKey}
+                onChange={(e) => setGeminiKey(e.target.value)}
+                placeholder="Enter your Gemini API key..."
+                className="w-full bg-[#f9f9ff] border border-[#c2c6d8] rounded-xl py-3 pl-4 pr-12 text-sm focus:ring-2 focus:ring-[#0050cb]/20 focus:border-[#0050cb] outline-none transition-all"
+              />
+              <button 
+                onClick={() => setShowGemini(!showGemini)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#727687] hover:text-[#111c2d]"
+              >
+                {showGemini ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+            <p className="text-xs text-[#727687] leading-relaxed">
+              Powers the AI that transforms transcripts into training manuals. 
+              Get your key from the <strong>Google AI Studio</strong> dashboard.
+            </p>
+          </div>
+
+          <div className="pt-4 flex items-center justify-between">
+            {saveStatus ? (
+              <div className="flex items-center gap-2 text-[#006c49] text-sm font-bold">
+                <CheckCircle2 size={16} /> {saveStatus}
+              </div>
+            ) : <div />}
+            <button 
+              onClick={handleSave}
+              className="bg-[#0050cb] text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-[#003fa4] transition-all shadow-md active:scale-95"
+            >
+              <Save size={18} /> Save Credentials
+            </button>
+          </div>
+        </div>
+      )
+    },
+    { title: 'App Connections', icon: LinkIcon, items: [
+      { name: 'Fathom Video', status: fathomKey ? 'Configured' : 'Missing Key', desc: 'Syncs latest recordings automatically.' },
       { name: 'Zoom', status: 'Not Connected', desc: 'Import Zoom cloud recordings.' },
-      { name: 'Google Meet', status: 'Connected', desc: 'Capture transcripts from browser extension.' },
-    ]},
-    { title: 'AI Model Preferences', icon: Sparkles, items: [
-      { name: 'Manual Accuracy', status: 'Gemini 3 Flash', desc: 'Standard balance of speed and precision.' },
-      { name: 'Summarization Style', status: 'Conversational', desc: 'Extracts action items in teaching tone.' },
     ]},
     { title: 'Team & Workspace', icon: Library, items: [
-      { name: 'Workspace Admin', status: 'bnprasanna95@gmail.com', desc: 'Owner with full access.' },
+      { name: 'Workspace Admin', status: 'balaje@zuper.co', desc: 'Owner with full access.' },
       { name: 'Team Plan', status: 'Pro Individual', desc: 'Unlimited guides per month.' },
     ]}
   ];
 
   return (
-    <div className="max-w-4xl mx-auto space-y-10">
+    <div className="max-w-4xl mx-auto space-y-10 pb-20">
       <header>
-        <h2 className="text-3xl font-bold text-[#111c2d] mb-2 font-display uppercase">App Settings</h2>
-        <p className="text-[#424656] text-lg">Manage your integrations, AI preferences, and workspace configuration.</p>
+        <h2 className="text-3xl font-bold text-[#111c2d] mb-2 font-display uppercase tracking-tight">App Settings</h2>
+        <p className="text-[#424656] text-lg">Manage your secure API keys, integrations, and workspace configuration.</p>
       </header>
 
       <div className="space-y-8">
         {sections.map((section) => (
-          <div key={section.title} className="bg-white border border-[#c2c6d8] rounded-3xl overflow-hidden shadow-sm">
+          <div key={section.title} className="bg-white border border-[#c2c6d8] rounded-3xl overflow-hidden shadow-xl">
             <div className="p-6 bg-[#f9f9ff] border-b border-[#c2c6d8] flex items-center gap-3">
                <section.icon size={20} className="text-[#0050cb]" />
                <h3 className="font-bold text-[#111c2d] uppercase tracking-wider text-sm">{section.title}</h3>
             </div>
-            <div className="divide-y divide-[#f0f3ff]">
-              {section.items.map((item) => (
-                <div key={item.name} className="p-6 flex items-center justify-between hover:bg-[#f9f9ff] transition-colors group">
-                  <div className="space-y-1">
-                    <h4 className="font-bold text-[#111c2d] flex items-center gap-2">
-                       {item.name}
-                       {item.status.includes('Connected') && <span className="w-1.5 h-1.5 rounded-full bg-[#006c49]"></span>}
-                    </h4>
-                    <p className="text-sm text-[#727687]">{item.desc}</p>
+            
+            {section.isCustom ? section.content : (
+              <div className="divide-y divide-[#f0f3ff]">
+                {section.items?.map((item) => (
+                  <div key={item.name} className="p-6 flex items-center justify-between hover:bg-[#f9f9ff] transition-colors group">
+                    <div className="space-y-1">
+                      <h4 className="font-bold text-[#111c2d] flex items-center gap-2">
+                         {item.name}
+                         {item.status === 'Configured' && <span className="w-1.5 h-1.5 rounded-full bg-[#006c49]"></span>}
+                      </h4>
+                      <p className="text-sm text-[#727687]">{item.desc}</p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                       <span className={`text-xs font-bold px-3 py-1 rounded-lg ${
+                         item.status === 'Configured' ? 'bg-[#6cf8bb]/20 text-[#006c49]' : 'bg-[#f0f3ff] text-[#424656]'
+                       }`}>
+                         {item.status}
+                       </span>
+                       <button className="text-[#0050cb] font-bold text-xs hover:underline uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Manage</button>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                     <span className={`text-xs font-bold px-3 py-1 rounded-lg ${
-                       item.status.includes('Connected') ? 'bg-[#6cf8bb]/20 text-[#006c49]' : 'bg-[#f0f3ff] text-[#424656]'
-                     }`}>
-                       {item.status}
-                     </span>
-                     <button className="text-[#0050cb] font-bold text-xs hover:underline uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Manage</button>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>

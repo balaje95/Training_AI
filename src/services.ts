@@ -9,7 +9,7 @@ export const mockRecordings: Recording[] = [
     date: 'Oct 12, 2023',
     duration: '42m 15s',
     participants: 3,
-    ownerEmail: 'bnprasanna95@gmail.com',
+    ownerEmail: 'balaje@zuper.co',
     participantAvatars: [
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCF1Kqz60nbNEX1yh0dno4iHIkP3NHBkKmDf51yrerIckv_JaCcoRQUB2YxdeLsADtrYaDtxlQnbAy4bvneghe0NVvT-koGoDMiF4vC5Ap6Tbln9ZIrQH7rJcboqgRyUP_arlWjftgPXYENDgbYgfGdyL3kxQZ-AbViHjJ5Zh47Tjef6UiO_l3AhXURthaHkR8RVC7XyBqI2SWq80O3FqDyXhv5gLndpLCHLNk1f5Y5dS5prkCxP7kXbtkbMbEuwKR-qmG_SJDw3Hw',
       'https://lh3.googleusercontent.com/aida-public/AB6AXuBOj2BxRY5b5X-yMUM1-XnTrmGC69v5jmmQxURTSJrgs-hA3jYB6Rh0S13XzckhxHOQin_bWoaYrqTN4SsIfkE6QuHGo03q_Q9WPqjv6SKEpYFz1h0lgB7sTCVPHS7oTlTTN_fsXUTDrq8gjujC9FnSm0rvnY9LFpGHp3fxSSgRkvk6pGXKwTVBJzar065QjVhSzF5u8wzm0in6Xn3t5kgIvjXrKEq_gwUybXRhtrGQR9-ZSZotujIPJfPEep2k4Q0oZ5qThEUJz5I'
@@ -22,7 +22,7 @@ export const mockRecordings: Recording[] = [
     date: 'Oct 11, 2023',
     duration: '15m 00s',
     participants: 1,
-    ownerEmail: 'bnprasanna95@gmail.com',
+    ownerEmail: 'balaje@zuper.co',
     participantAvatars: [
       'https://lh3.googleusercontent.com/aida-public/AB6AXuBOj2BxRY5b5X-yMUM1-XnTrmGC69v5jmmQxURTSJrgs-hA3jYB6Rh0S13XzckhxHOQin_bWoaYrqTN4SsIfkE6QuHGo03q_Q9WPqjv6SKEpYFz1h0lgB7sTCVPHS7oTlTTN_fsXUTDrq8gjujC9FnSm0rvnY9LFpGHp3fxSSgRkvk6pGXKwTVBJzar065QjVhSzF5u8wzm0in6Xn3t5kgIvjXrKEq_gwUybXRhtrGQR9-ZSZotujIPJfPEep2k4Q0oZ5qThEUJz5I'
     ],
@@ -34,7 +34,7 @@ export const mockRecordings: Recording[] = [
     date: 'Oct 10, 2023',
     duration: '58m 22s',
     participants: 2,
-    ownerEmail: 'bnprasanna95@gmail.com',
+    ownerEmail: 'balaje@zuper.co',
     participantAvatars: [
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCF1Kqz60nbNEX1yh0dno4iHIkP3NHBkKmDf51yrerIckv_JaCcoRQUB2YxdeLsADtrYaDtxlQnbAy4bvneghe0NVvT-koGoDMiF4vC5Ap6Tbln9ZIrQH7rJcboqgRyUP_arlWjftgPXYENDgbYgfGdyL3kxQZ-AbViHjJ5Zh47Tjef6UiO_l3AhXURthaHkR8RVC7XyBqI2SWq80O3FqDyXhv5gLndpLCHLNk1f5Y5dS5prkCxP7kXbtkbMbEuwKR-qmG_SJDw3Hw',
       'https://lh3.googleusercontent.com/aida-public/AB6AXuBOj2BxRY5b5X-yMUM1-XnTrmGC69v5jmmQxURTSJrgs-hA3jYB6Rh0S13XzckhxHOQin_bWoaYrqTN4SsIfkE6QuHGo03q_Q9WPqjv6SKEpYFz1h0lgB7sTCVPHS7oTlTTN_fsXUTDrq8gjujC9FnSm0rvnY9LFpGHp3fxSSgRkvk6pGXKwTVBJzar065QjVhSzF5u8wzm0in6Xn3t5kgIvjXrKEq_gwUybXRhtrGQR9-ZSZotujIPJfPEep2k4Q0oZ5qThEUJz5I'
@@ -46,7 +46,7 @@ export const mockRecordings: Recording[] = [
     date: 'Oct 09, 2023',
     duration: '35m 10s',
     participants: 4,
-    ownerEmail: 'bnprasanna95@gmail.com',
+    ownerEmail: 'balaje@zuper.co',
     participantAvatars: [
        'https://lh3.googleusercontent.com/aida-public/AB6AXuCF1Kqz60nbNEX1yh0dno4iHIkP3NHBkKmDf51yrerIckv_JaCcoRQUB2YxdeLsADtrYaDtxlQnbAy4bvneghe0NVvT-koGoDMiF4vC5Ap6Tbln9ZIrQH7rJcboqgRyUP_arlWjftgPXYENDgbYgfGdyL3kxQZ-AbViHjJ5Zh47Tjef6UiO_l3AhXURthaHkR8RVC7XyBqI2SWq80O3FqDyXhv5gLndpLCHLNk1f5Y5dS5prkCxP7kXbtkbMbEuwKR-qmG_SJDw3Hw'
     ]
@@ -57,7 +57,7 @@ export const mockRecordings: Recording[] = [
     date: 'Oct 08, 2023',
     duration: '22m 45s',
     participants: 2,
-    ownerEmail: 'bnprasanna95@gmail.com',
+    ownerEmail: 'balaje@zuper.co',
     participantAvatars: [
        'https://lh3.googleusercontent.com/aida-public/AB6AXuBOj2BxRY5b5X-yMUM1-XnTrmGC69v5jmmQxURTSJrgs-hA3jYB6Rh0S13XzckhxHOQin_bWoaYrqTN4SsIfkE6QuHGo03q_Q9WPqjv6SKEpYFz1h0lgB7sTCVPHS7oTlTTN_fsXUTDrq8gjujC9FnSm0rvnY9LFpGHp3fxSSgRkvk6pGXKwTVBJzar065QjVhSzF5u8wzm0in6Xn3t5kgIvjXrKEq_gwUybXRhtrGQR9-ZSZotujIPJfPEep2k4Q0oZ5qThEUJz5I'
     ]
@@ -67,7 +67,18 @@ export const mockRecordings: Recording[] = [
 
 export async function searchFathomRecordings(email: string): Promise<Recording[]> {
   try {
-    const response = await fetch(`/api/fathom/meetings?email=${encodeURIComponent(email)}`);
+    const customKey = localStorage.getItem('FATHOM_API_KEY');
+    const headers: Record<string, string> = {
+      'Accept': 'application/json'
+    };
+    
+    if (customKey) {
+      headers['x-fathom-key'] = customKey;
+    }
+
+    const response = await fetch(`/api/fathom/meetings?email=${encodeURIComponent(email)}`, {
+      headers
+    });
     const result = await response.json();
     
     if (result.error) {
@@ -87,12 +98,12 @@ export async function generateGuideFromTranscript(
   pipeline: PipelineType = 'General',
   customerName: string = 'Our Customer'
 ): Promise<{ title: string, steps: Step[] }> {
-  // Use platform-provided Gemini key
-  const geminiKey = process.env.GEMINI_API_KEY;
+  // Prioritize localStorage for user-provided key, fallback to process.env
+  const geminiKey = localStorage.getItem('GEMINI_API_KEY') || process.env.GEMINI_API_KEY;
   
   if (!geminiKey || geminiKey === "undefined" || geminiKey === "") {
-    console.error("GEMINI_API_KEY is missing or invalid in the frontend bundle.");
-    throw new Error('AI Generation is temporarily unavailable. Please ensure your Gemini API key is configured in the environment.');
+    console.error("GEMINI_API_KEY is missing or invalid.");
+    throw new Error('AI Generation is temporarily unavailable. Please configure your Gemini API key in Settings.');
   }
 
   const ai = new GoogleGenAI({ apiKey: geminiKey });
